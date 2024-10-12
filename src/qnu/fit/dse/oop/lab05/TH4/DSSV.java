@@ -1,7 +1,8 @@
 package qnu.fit.dse.oop.lab05.TH4;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.time.LocalDate;
+import java.util.function.BiPredicate;
+
 
 public class DSSV {
     private SV[] sinhViens;
@@ -12,10 +13,11 @@ public class DSSV {
         this.soSV = 0;
     }
 
-    public void them(SV sv) {
+    public void them(String hoTen, LocalDate ngaySinh, double dtb) {
         if (soSV < this.sinhViens.length)
-            this.sinhViens[soSV++] = sv;
+            this.sinhViens[soSV++] = new SV(hoTen, ngaySinh, dtb);
     }
+
     SV laySV(int index) {
         return (index <= soSV && index >= 0)?
                 sinhViens[index] : null;
@@ -29,62 +31,40 @@ public class DSSV {
     }
 
     public void sapHoTen() {
-        Arrays.sort(sinhViens, new Comparator<SV>() {
-            // định nghĩa lại hàm compare để so sánh theo họ tên
-            @Override
-            public int compare(SV a, SV b) {
-                // nếu mà cùng họ và tên thì return luôn
-                if (a.layHoTen().equalsIgnoreCase(b.layHoTen()))
-                    return 0;
+        this.sort((SV a, SV b) -> {
+            // nếu mà cùng họ và tên thì return luôn
+            if (a.layHoTen().equalsIgnoreCase(b.layHoTen()))
+                return false;
 
-                // xếp tên theo Tên + Họ + Đệm
-                String tempA = a.layTen() + " " + a.layHo() + " " + a.layDem();
-                String tempB = b.layTen() + " " + b.layHo() + " " + b.layDem();
+            // xếp tên theo Tên + Họ + Đệm
+            String tempA = a.layTen() + " " + a.layHo() + " " + a.layDem();
+            String tempB = b.layTen() + " " + b.layHo() + " " + b.layDem();
 
-                // lấy chuỗi có kích thước ngắn nhất để lặp
-                int minLength = Math.min(tempA.length(), tempB.length());
+            // lấy chuỗi có kích thước ngắn nhất để lặp
+            int minLength = Math.min(tempA.length(), tempB.length());
 
-                // duyệt từng kí tự của cả hai chuỗi và so sánh
-                for (int i = 0; i < minLength; ++i) {
-                    if (tempA.charAt(i) != tempB.charAt(i)) {
-                        return tempA.charAt(i) > tempB.charAt(i)? 1 : -1;
-                    }
+            // duyệt từng kí tự của cả hai chuỗi và so sánh
+            for (int i = 0; i < minLength; ++i) {
+                // nếu có kí tự khac trong cùng vị trí thì se so sánh kí tự bị khác đó
+                if (tempA.charAt(i) != tempB.charAt(i)) {
+                    return tempA.charAt(i) > tempB.charAt(i);
                 }
-                // nếu hai chuỗi từ 0 đến minLength bằng nhau
-                // thì bắt đầu so sánh kích thước hai chuỗi để quyết dịnh
-                return tempA.length() > tempB.length()? 1 : -1;
             }
+            // nếu hai chuối có kí tự từ 0 đến minLength bằng nhau
+            // thì bắt đầu so sánh kích thước hai chuỗi để quyết dịnh
+            return tempA.length() > tempB.length();
         });
     }
 
     public void sapTuoi() {
-        Arrays.sort(sinhViens, new Comparator<SV>() {
-            // định nghĩa lại hàm compare để so sánh theo tuổi
-            @Override
-            public int compare(SV a, SV b) {
-                int tuoiA = a.layTuoi();
-                int tuoiB = b.layTuoi();
-                if (tuoiA == tuoiB)
-                    return 0;
-
-                return tuoiA > tuoiB? 1 : -1;
-            }
+        this.sort((SV a, SV b) -> {
+            return a.layTuoi() < b.layTuoi();
         });
     }
 
-    public void  sapDTB() {
-        Arrays.sort(sinhViens, new Comparator<SV>() {
-            // định nghĩa lại hàm compare để so sánh theo điểm trung bình
-            @Override
-            public int compare(SV a, SV b) {
-                double tuoiA = a.layDtb();
-                double tuoiB = b.layDtb();
-
-                if (tuoiA == tuoiB)
-                    return 0;
-
-                return tuoiA > tuoiB? 1 : -1;
-            }
+    public void sapDTB() {
+        this.sort((SV a, SV b) -> {
+            return a.layDtb() < b.layDtb();
         });
     }
 
@@ -99,8 +79,10 @@ public class DSSV {
 
     void lietKeXepLoai(String xepLoai) {
         for (int i = 0; i < soSV; i++) {
-            if (sinhViens[i].layXepLoai().equalsIgnoreCase(xepLoai))
+            if (sinhViens[i].layXepLoai().equalsIgnoreCase(xepLoai)) {
+                System.out.println("+================+");
                 sinhViens[i].hienThi();
+            }
         }
     }
 
@@ -113,6 +95,30 @@ public class DSSV {
                 sinhViens[soSV] = sinhViens[i];
                 --soSV;
             }
+        }
+    }
+
+    SV[] getSinhViens() {
+        return sinhViens;
+    }
+
+    public int getSoSV() {
+        return soSV;
+    }
+
+    // tham số: nhận mọt lamda func với trả true nếu  agrs đầu tiên nhỏ hơn args thứ hai (sắp tăng dần)
+    private void sort (BiPredicate<SV, SV> lessThanFunc) {
+        SV temp;
+        int j = 0;
+
+        for (int i = 0; i < soSV; i++) {
+            temp = sinhViens[i];
+            j = i - 1;
+            while (j >= 0 && !lessThanFunc.test(temp, sinhViens[j])) {
+                sinhViens[j + 1] = sinhViens[j];
+                --j;
+            }
+            sinhViens[j + 1] = temp;
         }
     }
 }

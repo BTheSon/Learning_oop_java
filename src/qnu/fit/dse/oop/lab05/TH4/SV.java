@@ -38,9 +38,9 @@ public class SV {
     }
 
     void hienThi() {
-         System.out.println("-Ho ten: " + hoTen);
-         System.out.println("-Ngay sinh" + ngaySinh);
-         System.out.println("-Diem trung binh" + dtb);
+        System.out.println("-Ho ten: " + hoTen);
+        System.out.println("-Ngay sinh: " + ngaySinh);
+        System.out.println("-Diem trung binh: " + dtb);
     }
 
     public String layHo() {
@@ -56,7 +56,7 @@ public class SV {
         return temp[temp.length - 1];
     }
 
-    public  String layDem() {
+    public String layDem() {
         // sử dụng phương thức split cắt String hoten theo " " và lưu vào mảng String
         // sau đó lấy ptu thứ 2 từ sau đếm lên trong mảng vừa cắt(tức là Đệm)
         String[] temp = hoTen.split(" ");
@@ -77,4 +77,5 @@ public class SV {
             return "Kha";
         return "Gioi";
     }
+
 }
