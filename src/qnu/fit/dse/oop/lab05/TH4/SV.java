@@ -37,7 +37,7 @@ public class SV {
         this.dtb = dtb;
     }
 
-    void hienThi() {
+    public void hienThi() {
         System.out.println("-Ho ten: " + hoTen);
         System.out.println("-Ngay sinh: " + ngaySinh);
         System.out.println("-Diem trung binh: " + dtb);

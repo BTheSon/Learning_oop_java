@@ -18,7 +18,7 @@ public class DSSV {
             this.sinhViens[soSV++] = new SV(hoTen, ngaySinh, dtb);
     }
 
-    SV laySV(int index) {
+    public SV laySV(int index) {
         return (index <= soSV && index >= 0)?
                 sinhViens[index] : null;
     }
@@ -77,7 +77,7 @@ public class DSSV {
         return null;
     }
 
-    void lietKeXepLoai(String xepLoai) {
+    public void lietKeXepLoai(String xepLoai) {
         for (int i = 0; i < soSV; i++) {
             if (sinhViens[i].layXepLoai().equalsIgnoreCase(xepLoai)) {
                 System.out.println("+================+");
@@ -88,7 +88,7 @@ public class DSSV {
 
     // hàm thự hiện xóa sv có tên là hoTen
     // hàm có thể làm xáo trộn mảng (đề đâu yêu cầu phải giữa đung vị trí)
-    void xoa(String hoTen) {
+    public void xoa(String hoTen) {
         for (int i = 0; i < soSV; i++) {
             // kiêm tra có trùng họ tên không, nếu có thỉ đưa về cuối và giảm soSV
             if (sinhViens[i].layHoTen().equalsIgnoreCase(hoTen)) {
@@ -98,7 +98,7 @@ public class DSSV {
         }
     }
 
-    SV[] getSinhViens() {
+    public SV[] getSinhViens() {
         return sinhViens;
     }
 

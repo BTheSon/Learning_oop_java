@@ -1,10 +1,11 @@
-package qnu.fit.dse.oop.lab05.TH4;
+package qnu.fit.dse.oop.lab05.TH4.Test;
+
 import qnu.fit.dse.oop.lab05.TH4.DSSV;
 import qnu.fit.dse.oop.lab05.TH4.SV;
 import java.time.LocalDate;
 
 
-public class Main {
+public class Main4 {
     public static void main(String[] args) {
         // Tạo một danh sách gồm 5 sinh viên.
         DSSV dssv = new DSSV(5);
@@ -39,9 +40,9 @@ public class Main {
         double sum = 0.0;
         double average = 0.0;
         for (int i = 0; i < soSV; i++)
-            sum += sinhViens[i].dtb;
+            sum += sinhViens[i].layDtb();
         average = sum / soSV;
-        System.out.println("Tuoi trung binh cua sinh vien trong danh sach la: " + average);
+        System.out.println("==: Tuoi trung binh cua sinh vien trong danh sach la: " + average);
 
         // Tăng DTB lên 0.5 cho những SV sinh trước năm 1980.
 

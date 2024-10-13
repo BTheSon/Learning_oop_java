@@ -1,6 +1,9 @@
-package qnu.fit.dse.oop.lab05.TH3;
+package qnu.fit.dse.oop.lab05.TH3.Test;
 
-public class Main {
+import qnu.fit.dse.oop.lab05.TH3.Diem;
+import qnu.fit.dse.oop.lab05.TH3.SinhVien;
+
+public class Main3 {
     public static void main(String[] args) {
         SinhVien[] sinhViens = new SinhVien[3];
 
