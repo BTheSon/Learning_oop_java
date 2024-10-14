@@ -98,10 +98,6 @@ public class DSSV {
         }
     }
 
-    public SV[] getSinhViens() {
-        return sinhViens;
-    }
-
     public int getSoSV() {
         return soSV;
     }

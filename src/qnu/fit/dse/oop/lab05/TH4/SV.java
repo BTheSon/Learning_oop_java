@@ -5,7 +5,7 @@ public class SV {
 
     private String hoTen;
     private LocalDate ngaySinh;
-    double dtb;
+    private double dtb;
 
     public SV(String hoTen, LocalDate ngaySinh, double dtb) {
         this.hoTen = hoTen;
@@ -77,5 +77,21 @@ public class SV {
             return "Kha";
         return "Gioi";
     }
+
+    // so sánh this với other có lơn hơn về tuổi không
+    public boolean lonHon(SV other) {
+        return this.layTuoi() > other.layTuoi();
+    }
+
+    public boolean gioiHon(SV other) {
+        return this.dtb > other.dtb;
+    }
+
+    public boolean giongNhau(SV other) {
+        return this.hoTen.equalsIgnoreCase(other.layHoTen()) &&
+                this.dtb == other.dtb &&
+                this.ngaySinh.isEqual(other.ngaySinh);
+    }
+
 
 }

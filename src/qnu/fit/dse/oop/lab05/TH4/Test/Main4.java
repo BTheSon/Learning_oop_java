@@ -35,16 +35,23 @@ public class Main4 {
         System.out.println("\n==: Sinh vien ten Hoa dan bi xoa");
 
         //Tính tuổi trung bình
-        SV[] sinhViens = dssv.getSinhViens();
         int soSV = dssv.getSoSV();
         double sum = 0.0;
         double average = 0.0;
         for (int i = 0; i < soSV; i++)
-            sum += sinhViens[i].layDtb();
+            sum += dssv.laySV(i).layDtb();
         average = sum / soSV;
         System.out.println("==: Tuoi trung binh cua sinh vien trong danh sach la: " + average);
 
+
         // Tăng DTB lên 0.5 cho những SV sinh trước năm 1980.
+        for (int i = 0; i < dssv.getSoSV(); ++i) {
+            SV currentSV = dssv.laySV(i);   // tham chiếu tạm
+            // lấy năm trong thuộc tính ngaysinh
+            if  (currentSV.layNgaySinh().getYear() < 1980)
+                currentSV.ganDtb(currentSV.layDtb() + 0.5); // tăng lên 0.5đ
+        }
+        System.out.println("da tang nhung sinh vien có nam sinh trc 1980 len 0.5d");
 
     }
 }
