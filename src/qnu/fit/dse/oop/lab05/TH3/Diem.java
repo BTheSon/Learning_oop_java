@@ -14,7 +14,7 @@ public class Diem {
     }
 
     double tinDiem() {
-        return 0.1 * chuyenCan + 0.2  * giuaKy + 0.7 * cuoiKy;
+        return 0.1 * chuyenCan + 0.2 * giuaKy + 0.7 * cuoiKy;
     }
 
     public String getTenHocPhan() {

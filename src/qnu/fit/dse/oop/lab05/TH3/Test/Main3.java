@@ -10,7 +10,9 @@ public class Main3 {
         sinhViens[0] = new SinhVien(
                 "Nguyen Van A",
                 new Diem("Toan Cao Cap", 3, 10, 8, 6),
-                new Diem("Vat Ly Luong Tu", 2, 19, 6, 4)
+                new Diem("Vat Ly Luong Tu", 2, 19, 6, 4),
+                new Diem("Vat Ly Luong Tu 2", 2, 19, 6, 4)
+
         );
 
         sinhViens[1] = new SinhVien(
