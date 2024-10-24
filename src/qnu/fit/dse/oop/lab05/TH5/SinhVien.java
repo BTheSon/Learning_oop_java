@@ -1,7 +1,5 @@
 package qnu.fit.dse.oop.lab05.TH5;
 
-import qnu.fit.dse.oop.lab05.TH3.Diem;
-
 public class SinhVien {
     private String hoTen;
     private DiemHP hp1, hp2;

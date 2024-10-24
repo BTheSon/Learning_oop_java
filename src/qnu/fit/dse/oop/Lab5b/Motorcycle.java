@@ -1,4 +1,4 @@
-package qnu.fit.dse.oop.SomeTest;
+package qnu.fit.dse.oop.Lab5b;
 
 public class Motorcycle extends TestableVehicle {
     private int engineCapacity;

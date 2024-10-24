@@ -1,7 +1,7 @@
 package qnu.fit.dse.oop.lab05.TH5.Test;
 
-import qnu.fit.dse.oop.lab05.TH3.Diem;
 import qnu.fit.dse.oop.lab05.TH5.*;
+
 public class Main5 {
     public static void main(String[] args) {
         SinhVien[] sinhViens = new SinhVien[3];

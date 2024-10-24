@@ -1,4 +1,4 @@
-package qnu.fit.dse.oop.SomeTest;
+package qnu.fit.dse.oop.Lab5b;
 
 public class TestableVehicle extends Vehicle implements SpeedTest {
 
@@ -18,6 +18,4 @@ public class TestableVehicle extends Vehicle implements SpeedTest {
         System.out.println("Weight: " + weight + " kg");
         System.out.println("Speed: " + speed + " km/h");
     }
-
-
 }
