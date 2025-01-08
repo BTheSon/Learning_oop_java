@@ -1,0 +1,3 @@
+Sử dung lớp BufferedWriter để ghi file
+Có thể sử dụng Scanner để đọc từng dòng file
+	 phải kết hơp với lớp File để mở file cần đọc

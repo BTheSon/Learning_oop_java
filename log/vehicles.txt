@@ -1,0 +1,5 @@
+Motorcycle,77M1-1111,Wave,97,40,110
+Car,7701-1111,Mazda 2,1070,50,5
+Motorcycle,77M2-2222,Sirius,95,60,110
+Car,7702-2222,Mazda 3,1400,80,5
+Car,77C3-3333,Honda Civic,1268,90,5

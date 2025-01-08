@@ -1,0 +1,4 @@
+sql command
+    SHOW TABLES;
+    SHOW DATABASES;
+    source PATH_SOURCE_CODE_SQL // chạy tất cả code trong file sql đó
