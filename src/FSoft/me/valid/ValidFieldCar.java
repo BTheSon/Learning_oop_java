@@ -1,15 +1,16 @@
-package Test.valid;
+package FSoft.me.valid;
 
-import Test.log.ErrorLogger;
+import FSoft.me.log.ErrorLogger;
 
-public class ValidFieldMotorbike extends ValidFieldVehicle{
+public class ValidFieldCar extends  ValidFieldVehicle {
 
-    public ValidFieldMotorbike() {
+    public ValidFieldCar() {
         super();
     }
 
     @Override
     public boolean giaBan() {
+
         long sotien;
         try {
             sotien = Long.parseLong(record[9]);
@@ -18,17 +19,18 @@ public class ValidFieldMotorbike extends ValidFieldVehicle{
             ErrorLogger.logAttributeError(line, "Giá bán");
             return false;
         }
-        if (sotien < 0L || sotien > 100000000L) {
+        if (sotien < 0L || sotien > 3000000000L) {
             ErrorLogger.logAttributeError(line, "Giá bán");
             return false;
         }
+
         return true;
     }
 
     @Override
     public boolean hieuXe() {
         boolean result = switch (record[4]){
-            case "Lead", "Vision", "Air Blade" ->true;
+            case "HRV", "BRV", "CRV" ->true;
             default -> false;
         };
         if (!result)
@@ -39,11 +41,8 @@ public class ValidFieldMotorbike extends ValidFieldVehicle{
 
     @Override
     public boolean dataRedundancy() {
-        boolean result = false;
-        for (int i = record.length - 1; i > 0 && i > record.length - 5; --i) {
-            result = record[i].equalsIgnoreCase("None");
-        }
-
+        boolean result =record[record.length - 1].equalsIgnoreCase("None") &&
+                record[record.length - 2].equalsIgnoreCase("None");
         if (!result)
             ErrorLogger.logDataRedundancy(line);
 
@@ -51,7 +50,13 @@ public class ValidFieldMotorbike extends ValidFieldVehicle{
     }
 
     @Override
-    public boolean validRecord() {
-        return false;
+    public boolean validRecord()  {
+        return switch (record[0]) {
+            // kiểm tra có đúng fomat kiểu xe không
+            case "1", "2"
+                    -> mauSon() && ngayNhap() && soKhung() && soMay() && giaBan() && hieuXe() && dataRedundancy();
+            default -> false;
+        };
     }
+
 }

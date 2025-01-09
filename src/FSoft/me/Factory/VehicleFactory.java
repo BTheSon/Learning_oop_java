@@ -1,9 +1,8 @@
-package Test.Factory;
+package FSoft.me.Factory;
 
-import Test.model.Vehicle;
-import Test.valid.ValidFieldCar;
-import Test.valid.ValidFieldMotorbike;
-import Test.valid.ValidFieldVehicle;
+import FSoft.me.model.Vehicle;
+import FSoft.me.valid.ValidFieldCar;
+import FSoft.me.valid.ValidFieldMotorbike;
 
 import java.io.*;
 import java.sql.Connection;

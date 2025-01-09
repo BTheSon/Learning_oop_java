@@ -1,8 +1,7 @@
-package Test.valid;
+package FSoft.me.valid;
 
-import Test.log.ErrorLogger;
+import FSoft.me.log.ErrorLogger;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -10,14 +9,11 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 abstract public class ValidFieldVehicle {
-    protected static final DateTimeFormatter fomatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+    protected static final DateTimeFormatter fomatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     protected String[] record;
     protected int line;
 
-//    public ValidFieldVehicle(String[] record, int line) {
-//        this.record = record;
-//        this.line = line;
-//    }
+
     public ValidFieldVehicle(){}
 
     void setRecord(int line, String[] record) {
@@ -42,6 +38,7 @@ abstract public class ValidFieldVehicle {
     public boolean ngayNhap() {
         try {
             LocalDate date = LocalDate.parse(record[8], fomatter);
+//            fomatter.parse(record[8])
         }
         catch (DateTimeParseException e) {
             ErrorLogger.logAttributeError(line, "Ngày nhập");

@@ -1,4 +1,4 @@
-package Test.log;
+package FSoft.me.log;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

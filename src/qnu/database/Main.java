@@ -1,11 +1,7 @@
 package qnu.database;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.stream.Stream;
@@ -14,11 +10,6 @@ import qnu.database.DB.DBUtil;
 
 public class Main {
     public static void main(String[] args) {
-
-    }
-}
-
-/*
 
 //        String url = "jdbc:mysql://localhost:3306/OnlineStore";
 //        String username = "root";
@@ -30,22 +21,32 @@ public class Main {
             String query = "SELECT * FROM Orders";
             ResultSet result = stmt.executeQuery(query);
             while (result.next()) {
-                System.out.print(result.getInt(0));
-                System.out.println();
+                System.out.println(result.getDate(3).toLocalDate());
+
             }
+            PreparedStatement stm = dbUtil.getConection().prepareStatement("INSERT INTO PRODUCTs (name, price) VALUES ( ?, ?)");
+//            stm.setInt(1, 4);
+//            stm.setString(1, "key");
+//            stm.setFloat(2, 3000);
+//            stm.executeUpdate();
 //
-//            Statement statement = dbUtil.getConection().createStatement();
-//            String query = "SELECT * FROM PERSONS";
-//            ResultSet resultSet = statement.executeQuery(query);
-//
-//            while (resultSet.next()) {
-//                System.out.print(resultSet.getString("id")+ "|");
-//                System.out.print(resultSet.getString("lname")+ "|");
-//                System.out.println(resultSet.getString("fname")+ "|");
+//            result = stm.executeQuery("Select *  from PRODUCTs");
+//            while (result.next()) {
+//                System.out.println(result.getInt(1));
+//                System.out.println(result.getString(2));
+//                System.out.println(result.getFloat(3));
+//                System.out.println("======");
 //            }
+
+            stmt.executeUpdate("delete from products where name = \"key\" ");
+
+            stm.close();
+            stmt.close();
             dbUtil.getConection().close();
         } catch (SQLException e) {
             System.out.println("\nError:");
             System.out.println(e.getLocalizedMessage());
         }
- */
+    }
+}
+

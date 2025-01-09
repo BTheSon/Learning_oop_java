@@ -1,4 +1,4 @@
-package Test.util;
+package FSoft.me.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

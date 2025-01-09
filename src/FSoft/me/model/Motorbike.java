@@ -1,4 +1,4 @@
-package Test.model;
+package FSoft.me.model;
 
 import java.time.LocalDate;
 
