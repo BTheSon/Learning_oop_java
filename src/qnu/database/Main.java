@@ -37,7 +37,7 @@ public class Main {
 //                System.out.println(result.getFloat(3));
 //                System.out.println("======");
 //            }
-
+//            dbUtil.getConection().prepareCall()
             stmt.executeUpdate("delete from products where name = \"key\" ");
 
             stm.close();
